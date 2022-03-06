@@ -1,5 +1,6 @@
-package com.thevalenciandev.fintrack.transaction;
+package com.thevalenciandev.fintrack.transaction.history;
 
+import com.thevalenciandev.fintrack.transaction.Transaction;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
