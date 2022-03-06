@@ -1,4 +1,4 @@
-package com.thevalenciandev.fintrack.transactions;
+package com.thevalenciandev.fintrack.transaction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

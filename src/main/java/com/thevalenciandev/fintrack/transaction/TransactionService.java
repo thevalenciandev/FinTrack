@@ -1,16 +1,14 @@
-package com.thevalenciandev.fintrack.transactions;
+package com.thevalenciandev.fintrack.transaction;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@RestController
-public class TransactionsController {
+@Service
+public final class TransactionService {
 
-    @GetMapping
     public List<Transaction> getTransactions() {
         return List.of(new Transaction(
                 LocalDate.of(2022, 3, 6),
