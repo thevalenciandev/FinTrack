@@ -26,4 +26,9 @@ public final class TransactionController {
     public void uploadTransaction(@RequestBody Transaction transaction) {
         transactionService.addTransaction(transaction);
     }
+
+    @DeleteMapping(path = "{transactionId}")
+    public void deleteTransaction(@PathVariable("transactionId") Long id) {
+        transactionService.removeTransaction(id);
+    }
 }

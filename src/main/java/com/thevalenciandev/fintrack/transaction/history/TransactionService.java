@@ -23,4 +23,12 @@ public final class TransactionService {
     public void addTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
     }
+
+    public void removeTransaction(Long id) {
+        boolean exists = transactionRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("Unknown transaction with id " + id);
+        }
+        transactionRepository.deleteById(id);
+    }
 }
