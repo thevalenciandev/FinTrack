@@ -19,4 +19,8 @@ public final class TransactionService {
     public List<Transaction> getTransactions() {
         return transactionRepository.findAll();
     }
+
+    public void addTransaction(Transaction transaction) {
+        transactionRepository.save(transaction);
+    }
 }

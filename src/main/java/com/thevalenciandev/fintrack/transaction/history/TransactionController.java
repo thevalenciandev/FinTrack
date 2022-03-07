@@ -2,9 +2,7 @@ package com.thevalenciandev.fintrack.transaction.history;
 
 import com.thevalenciandev.fintrack.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,10 @@ public final class TransactionController {
     @GetMapping
     public List<Transaction> getTransactions() {
         return transactionService.getTransactions();
+    }
+
+    @PostMapping
+    public void uploadTransaction(@RequestBody Transaction transaction) {
+        transactionService.addTransaction(transaction);
     }
 }
