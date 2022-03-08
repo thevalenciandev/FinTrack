@@ -4,10 +4,11 @@ import com.thevalenciandev.fintrack.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public final class TransactionService {
+public class TransactionService {
 
     private final TransactionRepository transactionRepository;
 
@@ -30,5 +31,13 @@ public final class TransactionService {
             throw new IllegalStateException("Unknown transaction with id " + id);
         }
         transactionRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateTransaction(Long id, String category) {
+        Transaction transaction = transactionRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Unknown transaction with id " + id));
+
+        transaction.setCategory(category);
     }
 }

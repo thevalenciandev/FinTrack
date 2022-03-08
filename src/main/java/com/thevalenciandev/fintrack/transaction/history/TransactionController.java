@@ -31,4 +31,10 @@ public final class TransactionController {
     public void deleteTransaction(@PathVariable("transactionId") Long id) {
         transactionService.removeTransaction(id);
     }
+
+    @PutMapping(path = "{transactionId}")
+    public void amendTransaction(@PathVariable("transactionId") Long id,
+                                 @RequestParam String category) {
+        transactionService.updateTransaction(id, category);
+    }
 }
