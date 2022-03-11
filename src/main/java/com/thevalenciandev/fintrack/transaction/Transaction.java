@@ -14,6 +14,10 @@ import java.util.Objects;
 @Table
 public class Transaction {
 
+    public enum Direction {
+        IN, OUT //TODO: store in a more readable way
+    }
+
     @Id
     @SequenceGenerator(
             name = "transaction_sequence",
@@ -31,18 +35,20 @@ public class Transaction {
     private BigDecimal amount;
     private BigDecimal balance;
     private String category;
+    private Direction direction;
 
     public Transaction() {
         // So persistence provider can instantiate objects when mapping query results
     }
 
-    public Transaction(Long id, LocalDate date, String description, String category, BigDecimal amount, BigDecimal balance) {
+    public Transaction(Long id, LocalDate date, String description, String category, BigDecimal amount, BigDecimal balance, Direction direction) {
         this.id = id;
         this.date = date;
         this.description = description;
         this.category = category;
         this.amount = amount;
         this.balance = balance;
+        this.direction = direction;
     }
 
     public Long getId() {
@@ -93,6 +99,14 @@ public class Transaction {
         this.category = category;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -107,12 +121,13 @@ public class Transaction {
                 && Objects.equals(description, that.description)
                 && Objects.equals(amount, that.amount)
                 && Objects.equals(balance, that.balance)
-                && Objects.equals(category, that.category);
+                && Objects.equals(category, that.category)
+                && Objects.equals(direction, that.direction);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, description, amount, balance, category);
+        return Objects.hash(id, date, description, amount, balance, category, direction);
     }
 
     @Override
@@ -124,6 +139,7 @@ public class Transaction {
                 ", amount=" + amount +
                 ", balance=" + balance +
                 ", category='" + category + '\'' +
+                ", direction=" + direction +
                 '}';
     }
 }

@@ -21,23 +21,34 @@ public class TransactionConfig {
                     "CARD PAYMENT TO TFL TRAVEL",
                     "Transport",
                     BigDecimal.valueOf(-4.5),
-                    BigDecimal.valueOf(1234.56));
+                    BigDecimal.valueOf(1234.56),
+                    Transaction.Direction.OUT);
             Transaction t2 = new Transaction(
                     2L,
                     LocalDate.of(2022, 3, 7),
                     "DELIVEROO",
                     "Take-out",
                     BigDecimal.valueOf(-30.00),
-                    BigDecimal.valueOf(1204.56));
+                    BigDecimal.valueOf(1204.56),
+                    Transaction.Direction.OUT);
             Transaction t3 = new Transaction(
                     3L,
                     LocalDate.of(2022, 3, 8),
                     "BAKERY",
                     "Groceries",
                     BigDecimal.valueOf(-4.56),
-                    BigDecimal.valueOf(1200.0));
+                    BigDecimal.valueOf(1200.0),
+                    Transaction.Direction.OUT);
+            Transaction t4 = new Transaction(
+                    4L,
+                    LocalDate.of(2022, 3, 9),
+                    "INTEREST PAID",
+                    "Interest",
+                    BigDecimal.valueOf(4.5),
+                    BigDecimal.valueOf(1204.5),
+                    Transaction.Direction.IN);
 
-            transactionRepository.saveAll(List.of(t1, t2, t3));
+            transactionRepository.saveAll(List.of(t1, t2, t3, t4));
         };
     }
 }
