@@ -18,19 +18,26 @@ public class TransactionConfig {
             Transaction t1 = new Transaction(
                     1L,
                     LocalDate.of(2022, 3, 6),
-                    "CARD PAYMENT TO TFL TRAVEL ON 28-01-2022",
+                    "CARD PAYMENT TO TFL TRAVEL",
                     "Transport",
                     BigDecimal.valueOf(-4.5),
                     BigDecimal.valueOf(1234.56));
             Transaction t2 = new Transaction(
                     2L,
-                    LocalDate.of(2022, 3, 6),
-                    "DELIVEROO ON 29-01-2022",
+                    LocalDate.of(2022, 3, 7),
+                    "DELIVEROO",
                     "Take-out",
                     BigDecimal.valueOf(-30.00),
                     BigDecimal.valueOf(1204.56));
+            Transaction t3 = new Transaction(
+                    3L,
+                    LocalDate.of(2022, 3, 8),
+                    "BAKERY",
+                    "Groceries",
+                    BigDecimal.valueOf(-4.56),
+                    BigDecimal.valueOf(1200.0));
 
-            transactionRepository.saveAll(List.of(t1, t2));
+            transactionRepository.saveAll(List.of(t1, t2, t3));
         };
     }
 }
