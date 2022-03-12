@@ -21,6 +21,10 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
+    public List<Transaction> getTransactions(String category) {
+        return transactionRepository.findByCategory(category);
+    }
+
     public void addTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
     }

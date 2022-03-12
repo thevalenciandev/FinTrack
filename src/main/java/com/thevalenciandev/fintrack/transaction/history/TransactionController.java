@@ -8,7 +8,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path = "api/v1/transaction")
+@RequestMapping(path = "api/v1/transactions")
 public final class TransactionController {
 
     private final TransactionService transactionService;
@@ -19,8 +19,12 @@ public final class TransactionController {
     }
 
     @GetMapping
-    public List<Transaction> getTransactions() {
-        return transactionService.getTransactions();
+    public List<Transaction> getTransactions(@RequestParam(required = false) String category) {
+        if (category == null) {
+            return transactionService.getTransactions();
+        } else {
+            return transactionService.getTransactions(category);
+        }
     }
 
     @PostMapping
